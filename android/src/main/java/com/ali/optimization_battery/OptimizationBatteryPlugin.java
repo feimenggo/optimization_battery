@@ -100,6 +100,7 @@ public class OptimizationBatteryPlugin implements FlutterPlugin, MethodCallHandl
 
         Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:" + mContext.getPackageName()));
         try {
+            intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
             activity.startActivity(intent);
         } catch (ActivityNotFoundException e) {
             return LaunchStatus.ACTIVITY_NOT_FOUND;
